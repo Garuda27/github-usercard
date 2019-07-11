@@ -37,6 +37,14 @@
 //   "updated_at": "2019-06-04T23:26:21Z"
 // }
 
+axios.get("https://api.github.com/users/garuda27")
+  .then (data => {
+    const myProfile = data.data;
+    const cards = document.querySelector("cards");
+    const cardInfo = cardMaker(myProfile);
+    console.log(cardInfo);
+  })
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -113,15 +121,15 @@ function cardMaker(obj){
   location.textContent = obj.location;
   name.textContent = obj.name;
   user.textContent = obj.login;
-  const aProfileLink = obj.html_url;
-  profileLink.innerHTML = aProfileLink.link(obj.html_url);
+  const alink = obj.html_url;
+  link.innerHTML = alink.link(obj.html_url);
   followers.textContent = `Followers: ${obj.followers}`;
   following.textContent = `Following: ${obj.following}`;
   bio.textContent = obj.bio;
 
   return card;
 }
-console.log(cardMaker);
+// console.log(cardMaker);
 /* List of LS Instructors Github username's: 
   tetondan
   dustinmyers
